@@ -3,7 +3,21 @@
 ################################################################
 # mailfrob.py
 # (c) 2015 Ola Rinta-Koski <mailfrob@rinta-koski.net>
-# MIT License
+#
+# This file is part of Mailfrob.
+#
+# Mailfrob is free software: you can redistribute it and/or modify it
+# under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# Mailfrob is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Mailfrob.  If not, see <http://www.gnu.org/licenses/>.
 ################################################################
 
 import os
@@ -18,7 +32,6 @@ import re
 
 from cgi import escape
 from string import maketrans
-#from tempfile import mkstemp
 from subprocess import call, Popen, PIPE
 
 cocoa = "CocoaDialog.app/Contents/MacOS/CocoaDialog"
@@ -42,14 +55,6 @@ def dirselect( ):
         print cocoa
     return os.path.dirname(output), output
 
-
-#try:
-#    os.mkdir(outputdir)
-#except OSError as e:
-#    # Ignore directory exists error
-#    if e.errno != errno.EEXIST:
-#        raise
-
 emailfile = ''
 junkarg = re.compile(r'-')
 
@@ -71,7 +76,7 @@ for arg in sys.argv:
         pass
 
 if not emailfile:
-    print "Drag'n'drop failed - please press <ALT> while dragging"
+    print "Drag'n'drop failed - please press <Option/alt> while dragging"
     sys.exit()
 
 inputdir = os.path.dirname(emailfile)
