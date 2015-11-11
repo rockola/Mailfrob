@@ -1,7 +1,6 @@
 PLATYPUS=/usr/local/bin/platypus
 PLATYPUS_PROFILE=Mailfrob.platypus
 
-WKHTMLTOPDF_PKG := $(shell find lib -name "wkhtmlto*.pkg" -print0)
 WKHTMLTOPDF_TMPDIR=lib/tmp
 PATH_TO_WKHTMLTOX_INSTALLER=/usr/local/share/wkhtmltox-installer
 
@@ -17,6 +16,8 @@ Mailfrob.app: mailfrob.py lib/wkhtmltopdf
 	${PLATYPUS} -P ${PLATYPUS_PROFILE} $@
 
 lib/wkhtmltopdf:
+	@mkdir -p lib
+	$(eval WKHTMLTOPDF_PKG := $(shell find lib -name "wkhtmlto*.pkg" -print0))
 	@/bin/echo -n "Expanding ${WKHTMLTOPDF_PKG}... "
 	@pkgutil --expand "${WKHTMLTOPDF_PKG}" "${WKHTMLTOPDF_TMPDIR}"
 	@(cd ${WKHTMLTOPDF_TMPDIR}; tar xf Payload)
