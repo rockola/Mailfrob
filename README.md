@@ -38,7 +38,7 @@ http://www.sveinbjorn.org/platypus
 When you have installed Platypus, go to Preferences and click Install
 under "Command line tool is not installed". This will install the
 command line version of platypus in /usr/local/bin and support files
-in /usr/local/share/platypus. You can build platypus without
+in /usr/local/share/platypus. You can build Mailfrob without
 installing the CLI version just by using Platypus.app itself, however,
 the provided Makefile needs the CLI version.
 
